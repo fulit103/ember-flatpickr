@@ -7,6 +7,7 @@ import { scheduleOnce } from '@ember/runloop';
 import { getOwner } from '@ember/application';
 import { Instance as FlatpickrInstance } from 'flatpickr/dist/types/instance';
 import { BaseOptions as FlatpickrOptions } from 'flatpickr/dist/types/options';
+// import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate";
 
 interface EmberFlatpickrArgs extends FlatpickrOptions {
   date: FlatpickrOptions['defaultDate'];
@@ -134,6 +135,7 @@ export default class EmberFlatpickr extends Component<EmberFlatpickrArgs> {
       onReady: onReady || this.onReady,
       ...config,
       defaultDate: date,
+      plugins: [new quickSelectOptionsPlugin(), new confirmDatePlugin()],
     });
 
     this._setDisabled(disabled);

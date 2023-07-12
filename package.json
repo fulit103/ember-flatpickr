@@ -47,7 +47,7 @@
     "ember-cli-babel": "^7.26.11",
     "ember-cli-htmlbars": "^6.2.0",
     "ember-cli-typescript": "^5.0.0",
-    "flatpickr": "^4.6.9"
+    "flatpickr": "git+https://github.com/fulit103/flatpickr.git#master"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-0",
