@@ -1,4 +1,4 @@
-import { default as _flatpickr } from 'flatpickr';
+import { default as _flatpickr, confirmDatePlugin as _confirmDatePlugin, quickSelectOptionsPlugin as _quickSelectOptionsPlugin } from 'flatpickr';
 
 // Types for compiled templates
 // declare module 'ember-flatpickr/templates/*' {
@@ -9,4 +9,6 @@ import { default as _flatpickr } from 'flatpickr';
 
 declare global {
   const flatpickr: typeof _flatpickr;
+  const confirmDatePlugin: typeof _confirmDatePlugin;
+  const quickSelectOptionsPlugin: typeof _quickSelectOptionsPlugin;
 }

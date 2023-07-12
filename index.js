@@ -22,12 +22,18 @@ module.exports = {
     const vendorPath = 'vendor/flatpickr';
 
     this.import(`${vendorPath}/flatpickr.js`);
+    this.import(`${vendorPath}/plugins/confirmDate/confirmDate.js`);
+    this.import(
+      `${vendorPath}/plugins/quickSelectOptionsPlugin/quickSelectOptionsPlugin.js`
+    );
 
     if (app.options && app.options.flatpickr && app.options.flatpickr.theme) {
       this.import(`${vendorPath}/themes/${app.options.flatpickr.theme}.css`);
     } else {
       this.import(`${vendorPath}/flatpickr.css`);
     }
+
+    this.import(`${vendorPath}/plugins/quickSelectOptionsPlugin/style.css`);
 
     let locales = [];
     if (app.options && app.options.flatpickr && app.options.flatpickr.locales) {
@@ -50,10 +56,15 @@ module.exports = {
     const path = require('path');
 
     const distPath = path.dirname(require.resolve('flatpickr'));
+    console.log('distPath: ', distPath);
 
     let browserVendorLib = new Funnel(distPath, {
       destDir: 'flatpickr',
-      files: ['flatpickr.js'],
+      files: [
+        'flatpickr.js',
+        'plugins/confirmDate/confirmDate.js',
+        'plugins/quickSelectOptionsPlugin/quickSelectOptionsPlugin.js',
+      ],
     });
 
     browserVendorLib = map(
@@ -73,7 +84,11 @@ module.exports = {
 
     let defaultCSS = new Funnel(distPath, {
       destDir: 'flatpickr',
-      include: ['flatpickr.css'],
+      include: [
+        'flatpickr.css',
+        'plugins/quickSelectOptionsPlugin/style.css',
+        'plugins/confirmDate/confirmDate.css',
+      ],
     });
 
     let themes = new Funnel(path.join(distPath, '/themes'), {
